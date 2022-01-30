@@ -1,5 +1,3 @@
-appfile="../t4.log.gz"
-
 import pandas as pd
 import json
 import datetime as dt
@@ -8,33 +6,17 @@ import datetime as dt
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import plotly.graph_objs as go
 from plotly import tools
-init_notebook_mode()
 
+appfile="json_data.log.gz"
 all=pd.read_json(appfile, lines=True)
 all['Time']=all['asctime'].apply(lambda x: dt.datetime.strptime(x, "%Y-%m-%d %H:%M:%S,%f").timestamp())
-
 asks=all[(all['message']=='RealTimeBars') & (all['typ']=='ASK')]
-
 asks=asks[['asctime', 'Time', 'Close', 'ma_slow', 'ma_med', 'ma_fast']]
-
 positions_raw=all[all['message']=='cpos_id msg']
-
 positions=positions_raw[['asctime','Time','qty','act_qty','lastavgFillPrice']]
-
-#['ascti{"asctime": "2019-04-19 15:15:54,527", "levelname": "INFO", "name": "root",
- #"funcName": "order_rsp", "message": "cpos_id msg", "orderId": "0", "tstop_orderId": "0",
- #"notify": false, "term_ord_cnt": 1, "client": "fx9.aud", "secID": "AUD.USD", "qty": -25000,
- #"pricelmt": 0.001, "price": 0.71507, "tstop_offset": 0.002, "tstoplmt": 0.001, "act_qty": -25000,
- #"lastavgFillPrice": 0.71485, "cpos_id": "fx9.aud:1555686951"}
-#          me','Time',]]
-
-
 del all   # save memory
-
 long=positions[(positions['qty']==positions['act_qty']) & (positions['qty']>0)]
-
 short=positions[(positions['qty']==positions['act_qty']) & (positions['qty']<0)]
-
 exits=positions[(positions['qty']==positions['act_qty']) & (positions['qty']==0)]
 
 # Create traces
