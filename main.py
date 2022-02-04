@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import datetime as dt
+import jinja2
 
 # Use the plotly.offline module to use plotly without a cloud account
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
@@ -9,7 +10,7 @@ from plotly import tools
 
 appfile="json_data.log.gz"
 all=pd.read_json(appfile, lines=True)
-all['Time']=all['asctime'].apply(lambda x: dt.datetime.strptime(x, "%Y-%m-%d %H:%M:%S,%f").timestamp())
+all['Time']=pd.to_datetime(all.asctime, infer_datetime_format=True)
 asks=all[(all['message']=='RealTimeBars') & (all['typ']=='ASK')]
 asks=asks[['asctime', 'Time', 'Close', 'ma_slow', 'ma_med', 'ma_fast']]
 positions_raw=all[all['message']=='cpos_id msg']
@@ -81,7 +82,17 @@ exit = go.Scatter(
 )
 data=[price,slow,fast,entr_long,entr_short,exit]
 fig = go.Figure(data=data)
-fig['layout'].update(height=1000, width=1000, title='Viz Demo',plot_bgcolor="rgb(242,242,242,0)")
+fig['layout'].update(height=800, width=800 ,plot_bgcolor="rgb(242,242,242,0)")
 iplot(fig)
 
-fig.write_html("viz_demo.html")
+fig.write_html("viz_demo.html",full_html=False,include_plotlyjs='cdn')
+
+with open("viz_demo.html") as file:
+    plot_data = file.read().replace("\n", " ")
+
+subs = jinja2.Environment(
+              loader=jinja2.FileSystemLoader('./')
+              ).get_template('template.html').render(plot=plot_data)
+# lets write the substitution to a file
+with open('index.html','w') as f:
+    f.write(subs)
