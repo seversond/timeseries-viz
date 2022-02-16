@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Portfolio - David Severson</title>
+    <title>Timeseries Viz</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
 
@@ -34,42 +34,42 @@
   <body>
 
 <header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">This is a timeseries visualization example.</p>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a href="#" class="navbar-brand d-flex align-items-center">
-        <strong>David Severson - Timeseries Viz Example</strong>
+        <strong>Timeseries Viz Example</strong>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     </div>
   </div>
 </header>
 
 <main>
-
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">A Challenging Diagnostic Was Required</h1>
         <p class="lead text-muted">
-          blah blah blah</p>
-
+          I was confronted with a relatively complex set of timeseries data
+          and events.  They were intertwined.  I needed to do some diagnostics
+          on the incoming data and the events.  It was all trading related.
+          The prices and moving averages looked like continous variables and
+          the trading events were buried in all the other activity.  The
+          number of datapoints could be quite large at times.  This visualization
+          was done with plotly.  If you hover over the upper right corner of the
+          plot you will see the plotly menu appear.  Here you can access the
+          zoom feature.  This affords users the ability to examine details
+          milestone and timeseries data at a very low level.  The tool allowed
+          the creation of a very custom plot in a relatively short period of time.
+          Also the tips or tooltips when hovering over various objects offer
+          considerable customization.  Also this plot was created and exported
+          to an HTML.  This allowed for it to be embedded in a static webpage
+          without the need of webserving infrastructure.  For some organizations
+          this can provide both cost and security benefits.</p>
       </div>
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
+  <div>
     <div class="container">
       {{plot}}
     </div>
@@ -79,7 +79,7 @@
 
 <footer class="text-muted py-5">
   <div class="container">
-    <p class="mb-1">This page is based on the Bootstrap Album example.
+    <p class="mb-1">This page is based on the Bootstrap.
       Thank you Bootstrap!</p>
   </div>
 </footer>
