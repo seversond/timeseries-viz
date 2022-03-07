@@ -1,17 +1,24 @@
 # Introduction
 
 I was confronted with a relatively complex set of timeseries data and events.
-  They were intertwined. I needed to do some diagnostics on the incoming data and the events. This
-  visualization with Plotly provided tooltips and finegrained zoom that made it easy to create
-  a highly sophisticated diagnostic visualization tool.  The index.html
-  file here can be downloaded and viewed local.  Viewing these
-  artifacts from github.com at the moment is not possible.
+They were intertwined. I needed to do some diagnostics on the incoming data and the events. This
+visualization with Plotly provided tooltips and finegrained zoom that made it easy to create
+a highly sophisticated diagnostic visualization tool.  The index.html
+file here can be downloaded and viewed local or served from any webserver as a standalone
+file.  Viewing these
+artifacts directly from github.com at the moment is not possible.
 
 The other example of note here is the use of highly flexible json logging data.
 This code demonstrates the use of code to mine this complex structure and produce
 meaning full data. A example of some of these json artifacts are below.
 
+# More Detail
 
+The python code reads the json_data.log.gz file.  It pulls out a key set of records
+to produce the required data for the plot.  One the plot is produced it is added
+to the template.html file and written as index.html.  The index.html file can stand alone.
+It does use bootstap and plotly cdn references, which save on download time
+and will speed rendering.  But can become obsolete.
 
 # Highly Flexible Data Storage
 
