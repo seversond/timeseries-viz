@@ -1,5 +1,16 @@
 # Introduction
 
+I was confronted with a relatively complex set of timeseries data and events.
+  They were intertwined. I needed to do some diagnostics on the incoming data and the events. This
+  visualization with Plotly provided tooltips and finegrained zoom that made it easy to create
+  a highly sophisticated diagnostic visualization tool.  The index.html
+  file here can be downloaded and viewed local.  Viewing these
+  artifacts from github.com at the moment is not possible.
+
+The other example of note here is the use of highly flexible json logging data.
+This code demonstrates the use of code to mine this complex structure and produce
+meaning full data. A example of some of these json artifacts are below.
+
 
 
 # Highly Flexible Data Storage
