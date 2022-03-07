@@ -15,7 +15,7 @@ meaning full data. A example of some of these json artifacts are below.
 # More Detail
 
 The python code reads the json_data.log.gz file.  It pulls out a key set of records
-to produce the required data for the plot.  One the plot is produced it is added
+to produce the required data for the plot.  Once the plot is produced it is added
 to the template.html file and written as index.html.  The index.html file can stand alone.
 It does use bootstap and plotly cdn references, which save on download time
 and will speed rendering.  But can become obsolete.
